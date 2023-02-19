@@ -1,0 +1,14 @@
+{
+  "functions": [
+    {
+      "source": "dist/apps/final5",
+      "codebase": "default",
+      "ignore": [],
+      "predeploy": [
+        "nx test server --testTimeout 30000 --bail 1 --forceExit",
+        "nx build server --prod"
+      ]
+    }
+  ],
+  "hosting": []
+}

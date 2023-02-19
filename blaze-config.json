@@ -1,0 +1,36 @@
+{
+  "projects": {
+    "0.3514957552730782": {
+      "generator": "@nrwl:test",
+      "path": "test/test/test"
+    },
+    "0.44735030287627664": {
+      "generator": "@nrwl:test",
+      "path": "test/test/test"
+    },
+    "testy": {
+      "generator": "@nrwl/node",
+      "path": "apps/testy"
+    },
+    "final": {
+      "generator": "@nrwl/nest",
+      "path": "apps/final"
+    },
+    "final2": {
+      "generator": "@nrwl/nest",
+      "path": "apps/final2"
+    },
+    "final3": {
+      "generator": "@nrwl/nest",
+      "path": "apps/final3"
+    },
+    "final4": {
+      "generator": "@nrwl/nest",
+      "path": "apps/final4"
+    },
+    "final5": {
+      "generator": "@nrwl/nest",
+      "path": "apps/final5"
+    }
+  }
+}
