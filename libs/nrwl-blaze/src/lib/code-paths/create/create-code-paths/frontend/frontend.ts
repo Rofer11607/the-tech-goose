@@ -2,6 +2,7 @@ import {prompt} from 'inquirer'
 import {Config} from '../../../../shared/config/config'
 import {runCommand} from '../../../../shared/run-command/run-command'
 import {firebaseJsonTemplate} from './firebase-json-template'
+import {validateProjectName} from '../../../../shared/validate-project-name/validate-project-name'
 
 export async function createFrontend() {
   const config = new Config()
@@ -25,6 +26,7 @@ export async function createFrontend() {
       message: 'Would you like to create a hosting target?',
     }
   ])
+  validateProjectName(name)
 
   await runCommand(`npx nx g ${generator}:app ${name} --dry-run`, true)
 
@@ -38,8 +40,8 @@ export async function createFrontend() {
   firebaseJson.save()
   await runCommand(`firebase target:apply hosting ${name} ${hostingTargetName}`)
   }
-
   await runCommand(`npx nx g ${generator}:app ${name}`)
+  config.blazeConfig.setProject(name, generator)
 }
 
 

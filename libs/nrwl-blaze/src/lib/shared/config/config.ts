@@ -126,4 +126,10 @@ class BlazeConfig {
     config.projects[projectName] = generator;
     writeFileSync(this.path, JSON.stringify(config, null, 2));
   }
+
+  setFuctionsProject(projectName: string) {
+    const config = this.getBlazeConfig();
+    config.functionsProject = projectName;
+    writeFileSync(this.path, JSON.stringify(config, null, 2));
+  }
 }
