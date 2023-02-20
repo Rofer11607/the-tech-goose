@@ -2121,18 +2121,6 @@
   dependencies:
     nx "15.7.2"
 
-"@nrwl/cypress@15.6.3":
-  version "15.6.3"
-  resolved "https://registry.yarnpkg.com/@nrwl/cypress/-/cypress-15.6.3.tgz#a9213555eb1581ad36f3df512ef5f32f77af9089"
-  integrity sha512-ZPQ60KTkEgCQaIhaoPICiACfufuE8klwkBSl3bbTL5d6QEYlpTb2M1IeHEYZP1aEKXJlC9Kb6al9lB87peNVkQ==
-  dependencies:
-    "@nrwl/devkit" "15.6.3"
-    "@nrwl/linter" "15.6.3"
-    "@nrwl/workspace" "15.6.3"
-    "@phenomnomnominal/tsquery" "4.1.1"
-    dotenv "~10.0.0"
-    semver "7.3.4"
-
 "@nrwl/cypress@15.7.2":
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/@nrwl/cypress/-/cypress-15.7.2.tgz#a5a2cb6b4e570a2fa0e0c782cabf679a624bd3c8"
