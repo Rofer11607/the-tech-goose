@@ -25,7 +25,8 @@ export async function deleteProject() {
     const name = project.split('/').pop();
     if (name === 'nrwl-blaze') {
       console.log('cant delete nrwl-blaze, its too good')
-      return
+      console.log('just kidding but yea, I accidentally deleted it once and I had to rewrite it, so I wrote this in as an easter egg')
+      continue;
     }
     const e2eName = `${name}-e2e`;
 

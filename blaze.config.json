@@ -1,4 +1,7 @@
 {
-  "projects": {},
-  "functionsProject": "def"
+  "projects": {
+    "testy": "@nrwl/nest",
+    "bildtest": "@nrwl/angular"
+  },
+  "functionsProject": "testy"
 }

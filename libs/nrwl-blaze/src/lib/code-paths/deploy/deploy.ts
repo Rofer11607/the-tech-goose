@@ -20,7 +20,7 @@ export async function deploy() {
   if (project === 'functions') {
     const blazeConfig = config.blazeConfig.getBlazeConfig()
     const functionsProject = blazeConfig.functionsProject
-    await runCommand(`npx nx build ${functionsProject} --prod`)
+    await runCommand(`npx nx build ${functionsProject}`)
     await runCommand(`firebase deploy --only functions`)
     return
   }
