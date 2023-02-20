@@ -121,6 +121,12 @@ class BlazeConfig {
     return JSON.parse(file);
   }
 
+  removeFromBlazeConfig(projectName: string) {
+    const config = this.getBlazeConfig();
+    delete config.projects[projectName];
+    writeFileSync(this.path, JSON.stringify(config, null, 2));
+  }
+
   setProject(projectName: string, generator: string) {
     const config = this.getBlazeConfig();
     config.projects[projectName] = generator;

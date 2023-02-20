@@ -1,10 +1,5 @@
 {
   "projects": {
-    "def": "@nrwl/nest",
-    "new front": "@nrwl/react",
-    "testy-nest": "@nrwl/nest",
-    "testyMcTesterson": "@nrwl/react",
-    "ttt": "@nrwl/react"
   },
   "functionsProject": "def"
 }
