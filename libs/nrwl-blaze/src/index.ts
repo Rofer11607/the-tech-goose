@@ -1,1 +1,2 @@
-export * from './lib/nrwl-blaze';
+import {nrwlBlaze} from './lib/nrwl-blaze'
+nrwlBlaze()

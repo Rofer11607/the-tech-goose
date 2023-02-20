@@ -4,7 +4,10 @@ import {runCommand} from '../../../../shared/run-command/run-command'
 import {firebaseJsonTemplate} from './firebase-json-template'
 
 export async function createFrontend() {
-  const {name, generator, createHostingTarget} = await prompt([
+  const config = new Config()
+  await config.checkForFirebaseDefault()
+ 
+  const {name, generator, createTarget} = await prompt([
     {
       type: 'input',
       name: 'name',
@@ -18,28 +21,25 @@ export async function createFrontend() {
     },
     {
       type: 'confirm',
-      name: 'createHostingTarget',
+      name: 'createTarget',
       message: 'Would you like to create a hosting target?',
     }
   ])
 
   await runCommand(`npx nx g ${generator}:app ${name} --dry-run`, true)
-  const config = new Config()
 
-  if(createHostingTarget) {
+  if(createTarget) {
   const firebaseJson = config.firebaseJson
+  console.log('creating hosting target')
   const hostingTargetName = await createHostingTarget(name)
   firebaseJsonTemplate.public = `dist/apps/${name}`
   firebaseJsonTemplate.target = name
   firebaseJson.data.hosting.push(firebaseJsonTemplate)
   firebaseJson.save()
-  const firebaserc = config.firebaserc
+  await runCommand(`firebase target:apply hosting ${name} ${hostingTargetName}`)
   }
 
-
-
-
-
+  await runCommand(`npx nx g ${generator}:app ${name}`)
 }
 
 
@@ -51,7 +51,9 @@ function generateHostingTargetName(appName: string) {
 
 async function createHostingTarget(appName: string) {
   const name = generateHostingTargetName(appName)
-  await runCommand(`firebase hosting:sites:create ${name}`)
+  const command = `firebase hosting:sites:create ${name}`
+  console.log(command)
+  await runCommand(command)
   return name
 }
 

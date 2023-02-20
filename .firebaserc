@@ -1,5 +1,20 @@
 {
-  "projects": {
-    "default": "autoreschedulewmerchant"
-  }
+  "projects": {},
+  "targets": {
+    "the-tech-goose": {
+      "hosting": {
+        "t": [
+          "t-2326be5f79"
+        ],
+        "a": [
+          "a-c1dd314b20"
+        ],
+        "blah": [
+          "blah-13d61576446"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "default": "the-tech-goose"
 }

@@ -1,6 +1,8 @@
+import {prompt} from 'inquirer'
 import { readdirSync,existsSync, writeFileSync, readFileSync } from 'fs';
 import {execSync} from 'child_process'
 import {JsonFile} from '../json-file/json-file';
+import {runCommand} from '../run-command/run-command';
 
 export class Config {
   private _root = '';
@@ -37,6 +39,8 @@ export class Config {
   async checkForFirebaseDefault() {
     const firebaserc = this.firebaserc;
     if (!firebaserc.data.default) {
+      console.log('No default firebase project set, setting now...');
+      console.log(firebaserc.data)
       await this.setDefaultFirebaseProject();
     }
   }
@@ -54,7 +58,20 @@ export class Config {
   }
 
   async setDefaultFirebaseProject() {
-    console.log('not implemented')
+    const {project} = await prompt([
+      {
+        type: 'list',
+        name: 'project',
+        message: 'Which Firebase project would you like to use?',
+        choices: this.getFirebaseProjects()
+      }
+    ])
+    const firebaserc = this.firebaserc;
+    firebaserc.data.default = project;
+    firebaserc.save();
+    const firebaseJson = this.firebaseJson;
+    firebaseJson.save();
+    runCommand(`firebase use ${project}`)
   }
 
   private findRoot(currentPath = __dirname, itt = 0): string {
