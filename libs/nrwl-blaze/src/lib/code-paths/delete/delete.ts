@@ -21,6 +21,8 @@ export async function deleteProject() {
     },
   ]);
 
+  console.log({projects});
+
   for (const project of projects) {
     const name = project.split('/').pop();
     if (name === 'nrwl-blaze') {
@@ -37,5 +39,32 @@ export async function deleteProject() {
 
     await runCommand(`npx nx g @nrwl/workspace:remove ${name}`);
     config.blazeConfig.removeFromBlazeConfig(name);
+    const {firebaseJson} = config;
+    const hostingArr = firebaseJson.data.hosting;
+    const hostingIndex = hostingArr.findIndex((h:any) => h.target === name);
+
+
+    if (hostingIndex > -1) {
+      console.log('removing from firebase.json');
+      firebaseJson.data.hosting.splice(hostingIndex, 1);
+      firebaseJson.save();
+    } else {
+      console.log(`skipped firebase json for ${name}`);
+    }
+    const {firebaserc} = config;
+
+    const defaultProject = firebaserc.data.default
+    console.log({defaultProject, firebaserc})
+    const hostingId = firebaserc.data.targets[defaultProject].hosting[name][0];
+    if (hostingId) {
+      console.log('removing from .firebaserc');
+      const deleteHosting = `firebase hosting:sites:delete ${hostingId}`
+      await runCommand(deleteHosting);
+      delete firebaserc.data.projects[name];
+      firebaserc.save();
+    } else {
+      console.log(`skipped firebaserc for ${name}`);
+    }
+
   }
 }

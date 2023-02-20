@@ -35,7 +35,7 @@ export async function firebaseFunctions(){
   const firebaseJson = config.firebaseJson
   firebaseJson.data.functions.source = `dist/apps/${name}`
   firebaseJson.data.functions.predeploy = []
-  firebaseJson.data.functions.predeploy.push(`npx nx build server --prod`)
+  firebaseJson.data.functions.predeploy.push(`npx nx build ${name} --prod`)
   if(addTesting) {
     const testCommand = `npx nx test ${name} --testTimeout 30000 --bail 1 --forceExit`
     firebaseJson.data.functions.predeploy.push(testCommand)

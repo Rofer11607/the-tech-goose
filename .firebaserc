@@ -3,34 +3,11 @@
   "targets": {
     "the-tech-goose": {
       "hosting": {
-        "t": [
-          "t-2326be5f79"
+        "testy": [
+          "testy-e3386c6b69"
         ],
-        "a": [
-          "a-c1dd314b20"
-        ],
-        "blah": [
-          "blah-13d61576446"
-        ],
-        "new": [
-          "front",
-          "front-14177679b93",
-          "new"
-        ],
-        "testyMcTesterson": [
-          "testyMcTesterson-734ff20696"
-        ],
-        "ttt": [
-          "ttt-15453cde28d"
-        ],
-        "adamtest": [
-          "adamtest-146a36b287b"
-        ],
-        "adamtesttwo": [
-          "adamtesttwo-adad0ef2be"
-        ],
-        "bildtest": [
-          "bildtest-bd4125069b"
+        "anothertest": [
+          "anothertest-14b2b4cba35"
         ]
       }
     }

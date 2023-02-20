@@ -1,9 +1,9 @@
 {
   "functions": {
-    "source": "dist/apps/testy",
+    "source": "dist/apps/serving",
     "predeploy": [
       "npx nx build server --prod",
-      "npx nx test testy --testTimeout 30000 --bail 1 --forceExit"
+      "npx nx test serving --testTimeout 30000 --bail 1 --forceExit"
     ]
   },
   "hosting": [
@@ -274,6 +274,39 @@
     {
       "target": "bildtest",
       "public": "dist/apps/bildtest",
+      "ignore": [
+        "**/.*"
+      ],
+      "headers": [
+        {
+          "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        {
+          "source": "/@(ngsw-worker.js|ngsw.json)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "testy",
+      "public": "dist/apps/testy",
       "ignore": [
         "**/.*"
       ],
