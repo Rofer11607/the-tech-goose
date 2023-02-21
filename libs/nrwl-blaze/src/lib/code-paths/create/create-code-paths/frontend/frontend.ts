@@ -54,7 +54,6 @@ function generateHostingTargetName(appName: string) {
 async function createHostingTarget(appName: string) {
   const name = generateHostingTargetName(appName)
   const command = `firebase hosting:sites:create ${name}`
-  console.log(command)
   await runCommand(command)
   return name
 }

@@ -1,8 +1,6 @@
 {
   "projects": {
-    "testy": "@nrwl/angular",
-    "bildtest": "@nrwl/angular",
-    "serving": "@nrwl/nest"
+    "servertwo": "@nrwl/nest"
   },
-  "functionsProject": "serving"
+  "functionsProject": "servertwo"
 }

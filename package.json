@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build:blaze": "npx nx build nrwl-blaze",
-    "run:blaze": "node ./dist/libs/nrwl-blaze/src/index.js"
+    "run:blaze": "node ./dist/libs/nrwl-blaze/src/index.js",
+    "deploy:blaze": "./scripts/deploy-blaze.sh"
   },
   "private": true,
   "dependencies": {

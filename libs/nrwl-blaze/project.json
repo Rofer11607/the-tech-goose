@@ -4,7 +4,7 @@
   "sourceRoot": "libs/nrwl-blaze/src",
   "projectType": "library",
   "targets": {
-    "build": {
+    "compile": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -12,6 +12,13 @@
         "main": "libs/nrwl-blaze/src/index.ts",
         "tsConfig": "libs/nrwl-blaze/tsconfig.lib.json",
         "assets": ["libs/nrwl-blaze/*.md"]
+      }
+    },
+    "build": {
+      "dependsOn": ["compile"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node ./libs/nrwl-blaze/shebangify.js"
       }
     },
     "lint": {

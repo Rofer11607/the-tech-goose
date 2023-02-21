@@ -40,7 +40,6 @@ export class Config {
     const firebaserc = this.firebaserc;
     if (!firebaserc.data.default) {
       console.log('No default firebase project set, setting now...');
-      console.log(firebaserc.data)
       await this.setDefaultFirebaseProject();
     }
   }
@@ -71,10 +70,10 @@ export class Config {
     firebaserc.save();
     const firebaseJson = this.firebaseJson;
     firebaseJson.save();
-    runCommand(`firebase use ${project}`)
+    await runCommand(`firebase use ${project}`)
   }
 
-  private findRoot(currentPath = __dirname, itt = 0): string {
+  private findRoot(currentPath = process.cwd(), itt = 0): string {
     const files = readdirSync(currentPath);
     if (files.includes('nx.json')) {
       return currentPath;
